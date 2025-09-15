@@ -7,62 +7,38 @@
 
     <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css">
     
-    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
 </head>
 <body>
 
     <h1>歡迎來到中華電信網站(demo)！</h1>
-    <p>請先登入，才能使用右下角的智慧客服。</p>
-
-    <div id="g_id_onload"
-         data-client_id="552304902075-lm5b24mgb08hposgi31o5iiotkb470p0.apps.googleusercontent.com"
-         data-callback="onSignIn">
-    </div>
-    <div class="g_id_signin" data-type="standard">
-    </div>
-
-    <div id="df-messenger-wrapper" style="display: none;">
-        <df-messenger
-            project-id="chte-test"
-            agent-id="2da9b79e-b6f4-46cd-beb7-e446b1055d4e"
-            language-code="zh-tw"
-            max-query-length="-1">
-            <df-messenger-chat-bubble
-                chat-title="中華電信智慧客服_demo">
-            </df-messenger-chat-bubble>
-        </df-messenger>
-    </div>
+    <p>右下角有智慧客服，可以點開使用！</p>
     
-    <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+    <df-messenger
+        project-id="chte-test"
+        agent-id="2da9b79e-b6f4-46cd-beb7-e446b1055d4e"
+        language-code="zh-tw"
+        
+        oauth-client-id="552304902075-lm5b24mgb08hposgi31o5iiotkb470p0.apps.googleusercontent.com">
+
+        <df-messenger-chat-bubble
+             chat-title="中華電信智慧客服_demo">
+        </df-messenger-chat-bubble>
+    </df-messenger>
 
     <style>
-        df-messenger {
-            z-index: 999;
-            position: fixed;
-            --df-messenger-font-color: #000;
-            --df-messenger-font-family: Arial;
-            --df-messenger-chat-background: #f3f6fc;
-            --df-messenger-message-user-background: #d3e3fd;
-            --df-messenger-message-bot-background: #fff;
-            bottom: 16px;
-            right: 16px;
-        }
+      df-messenger {
+        z-index: 999;
+        position: fixed;
+        --df-messenger-font-color: #000;
+        --df-messenger-font-family: Arial;
+        --df-messenger-chat-background: #f3f6fc;
+        --df-messenger-message-user-background: #d3e3fd;
+        --df-messenger-message-bot-background: #fff;
+        bottom: 16px;
+        right: 16px;
+      }
     </style>
-
-    <script>
-        // 當使用者成功登入後，Google 會呼叫這個函式
-        function onSignIn(googleUser) {
-            console.log("Google 登入成功！");
-
-            document.querySelector('.g_id_signin').style.display = 'none';
-
-            // 顯示聊天機器人
-            document.getElementById('df-messenger-wrapper').style.display = 'block';
-            
-            // 改變提示文字
-            document.querySelector('p').textContent = '您已成功登入，可以開始使用智慧客服！';
-        }
-    </script>
 
 </body>
 </html>
